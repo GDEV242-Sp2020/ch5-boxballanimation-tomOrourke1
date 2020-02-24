@@ -22,7 +22,7 @@ public class BallDemo
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
     }
-
+    
     /**
      * Simulate two bouncing balls
      */
@@ -33,8 +33,7 @@ public class BallDemo
         myCanvas.setVisible(true);
 
         // draw the ground
-        myCanvas.drawLine(50, ground, 550, ground);
-        myCanvas.drawLine(50, roof, 550, roof);
+        drawSquare(450,450,50,50);
         
         
         
@@ -60,5 +59,18 @@ public class BallDemo
                 // finished = true;
             // }
         // }
+    }
+    private void drawSquare(int sizeX, int sizeY, int posX, int posY)
+    {
+        
+        
+        
+        myCanvas.drawLine(0 + posX, 0 + posY, sizeX + posX, 0 + posY);
+        myCanvas.drawLine(0 + posX, 0 + posY, 0 + posX, sizeY + posY);
+        myCanvas.drawLine( 0 + posX, sizeY + posY, sizeX + posX, sizeY + posY);
+        myCanvas.drawLine( sizeX + posX, 0 + posY, sizeX + posX, sizeY + posY);
+        
+        
+        
     }
 }
