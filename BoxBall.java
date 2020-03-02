@@ -100,23 +100,23 @@ public class BoxBall
         
         if (xPosition + diameter>= rightPosition)
         {
-            ySpeed *= -1;
+            xSpeed *= -1;
             xPosition -= diameter;
         }
         else if(xPosition <= leftPosition)
         {
-            ySpeed *= -1;
+            xSpeed *= -1;
             xPosition += diameter;
         }
         
         if (yPosition + diameter >= bottomPosition)
         {
-            xSpeed *= -1;
+            ySpeed *= -1;
             yPosition -= diameter;
         }
         else if (yPosition <= topPosition)
         {
-            xSpeed *= -1;
+            ySpeed *= -1;
             yPosition += diameter;
         }
         

@@ -77,8 +77,8 @@ public class BallDemo
             
             ballDiameter = (randomNumber(25 - 10) + 10) + 1;
             
-            xPos = randomNumber((rightPos - ballDiameter) - leftPos);
-            yPos = randomNumber((rightPos - ballDiameter) - leftPos);
+            xPos = randomNumber((rightPos - ballDiameter), leftPos);
+            yPos = randomNumber((rightPos - ballDiameter), leftPos);
             
             speedX = randomNumber(8, -7,true);
             speedY = randomNumber(8, -7,true);
