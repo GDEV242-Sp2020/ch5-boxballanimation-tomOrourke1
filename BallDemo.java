@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.Random;
+import java.util.ArrayList;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -14,6 +15,8 @@ import java.util.Random;
 public class BallDemo   
 {
     private Canvas myCanvas;
+    
+    private ArrayList<BoxBall> ballArray;
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -28,6 +31,9 @@ public class BallDemo
      */
     public void bounce()
     {
+        ballArray = new ArrayList<>();
+        
+        
         int ground = 400;   // position of the ground line
         int roof = 10;
         myCanvas.setVisible(true);
@@ -46,12 +52,17 @@ public class BallDemo
         int xPos = 50;
         int yPos = 50;
         int ballDiameter = 50;
-        Color ballColor;
-        int bottomPos = 0;
-        int leftPos = 0;
-        int rightPos = 0;
-        int topPos = 0;
         
+        Color ballColor;
+        
+        int bottomPos = boxY + offBoxY;
+        int leftPos = 0 + offBoxX;
+        int rightPos = boxX + offBoxX;
+        int topPos = 0 + offBoxY;
+        
+        
+        int speedX = 0;
+        int speedY = 0;
         
         
 
@@ -64,13 +75,19 @@ public class BallDemo
         {
             ballColor = new Color(randomNumber(255),randomNumber(255),randomNumber(255));
             
-            xPos = randomNumber();
+            ballDiameter = (randomNumber(25 - 10) + 10) + 1;
+            
+            xPos = randomNumber((rightPos - ballDiameter) - leftPos);
+            yPos = randomNumber((rightPos - ballDiameter) - leftPos);
+            
+            speedX = randomNumber(8, -7,true);
+            speedY = randomNumber(8, -7,true);
             
             
             BoxBall ball = new BoxBall(xPos, yPos, ballDiameter,ballColor,bottomPos,
-                                    leftPos, rightPos, topPos, myCanvas);
+                                    leftPos, rightPos, topPos, myCanvas, speedX, speedY);
             
-            
+            ballArray.add(ball);
                                     
             ball.draw();                        
                                     
@@ -79,18 +96,34 @@ public class BallDemo
         
         
         
-        
-        
-        
-        // crate and show the balls
-        //BouncingBall ball = new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas);
-        //ball.draw();
-        //BouncingBall ball2 = new BouncingBall(70, 80, 20, Color.RED, ground, myCanvas);
-        //ball2.draw();
-
-        
         // make them bounce
         boolean finished =  false;
+        
+        while(!finished)
+        {
+            myCanvas.wait(50);
+            
+            for(BoxBall ball : ballArray)
+            {
+                ball.move();
+                
+                
+                
+            }
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         /**
          * This is the movement
          * its just paused for the time being
@@ -124,7 +157,15 @@ public class BallDemo
         return num;
         
     }    
-    
+    private int randomNumber(int max, int min, boolean range)
+    {
+        Random rand = new Random();
+        int num;
+        num = (rand.nextInt(max - min) + min);
+        
+        return num;
+        
+    }    
     
     private void drawSquare(int sizeX, int sizeY, int posX, int posY)
     {

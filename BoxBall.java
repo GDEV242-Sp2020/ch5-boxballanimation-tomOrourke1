@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.Random;
 
 /**
  * Write a description of class BoxBall here.
@@ -23,12 +24,13 @@ public class BoxBall
     private final int rightPosition;
     private final int topPosition;
     
-    
+    private int xSpeed;
+    private int ySpeed;  
     
     private Canvas canvas;
     
     
-    private int ySpeed = 1;                // initial downward speed
+                  // initial downward speed
         /**
      * Constructor for objects of class BouncingBall
      *
@@ -40,7 +42,8 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        int bottomPos,int leftPos, int rightPos, int topPos, Canvas drawingCanvas)
+                        int bottomPos,int leftPos, int rightPos, int topPos, Canvas drawingCanvas, 
+                        int inXSpeed, int inYSpeed)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -51,6 +54,10 @@ public class BoxBall
         rightPosition = rightPos;
         topPosition = topPos;
         canvas = drawingCanvas;
+        
+        xSpeed = inXSpeed;
+        ySpeed = inYSpeed;
+        
     }
     
     /**
@@ -86,13 +93,32 @@ public class BoxBall
         // compute new position
         //ySpeed += GRAVITY;
         yPosition += ySpeed;
-        xPosition +=2;
+        xPosition += xSpeed;
 
         
         
         
+        if (xPosition + diameter>= rightPosition)
+        {
+            ySpeed *= -1;
+            xPosition -= diameter;
+        }
+        else if(xPosition <= leftPosition)
+        {
+            ySpeed *= -1;
+            xPosition += diameter;
+        }
         
-        
+        if (yPosition + diameter >= bottomPosition)
+        {
+            xSpeed *= -1;
+            yPosition -= diameter;
+        }
+        else if (yPosition <= topPosition)
+        {
+            xSpeed *= -1;
+            yPosition += diameter;
+        }
         
         
         
