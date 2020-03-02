@@ -55,8 +55,16 @@ public class BoxBall
         topPosition = topPos;
         canvas = drawingCanvas;
         
-        xSpeed = inXSpeed;
-        ySpeed = inYSpeed;
+        
+        // this makes it so that the speeds aren't Zero
+        if (inXSpeed == 0)
+            xSpeed = 7;
+        else
+            xSpeed = inXSpeed;
+        if(inYSpeed == 0)
+            ySpeed = 7;
+        else
+            ySpeed = inYSpeed;
         
     }
     
@@ -86,17 +94,11 @@ public class BoxBall
         erase();
             
         
-        
-        
-        
-        
         // compute new position
         //ySpeed += GRAVITY;
         yPosition += ySpeed;
         xPosition += xSpeed;
 
-        
-        
         
         if (xPosition + diameter>= rightPosition)
         {
@@ -121,18 +123,6 @@ public class BoxBall
         }
         
         
-        
-        
-        // check if it has hit the ground
-        /*
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
-        }
-*/
-
-
-
 
         // draw again at new position
         draw();
