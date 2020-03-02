@@ -115,7 +115,7 @@ public class BallDemo
             
             //this generates a random position for the balls inside the box
             xPos = randomNumber((rightPos - ballDiameter), leftPos);
-            yPos = randomNumber((rightPos - ballDiameter), leftPos);
+            yPos = randomNumber((bottomPos - ballDiameter), topPos);
             
             //this gets a random speed for the balls
             speedX = randomNumber(7, -7,true);
