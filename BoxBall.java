@@ -93,6 +93,12 @@ public class BoxBall
         // remove from canvas at the current position
         erase();
             
+        //Random rand = new Random();
+        
+        //color = new Color(rand.nextInt(240),rand.nextInt(240),rand.nextInt(240));
+        
+        
+        
         
         // compute new position
         //ySpeed += GRAVITY;

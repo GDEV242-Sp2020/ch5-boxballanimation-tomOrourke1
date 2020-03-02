@@ -63,7 +63,7 @@ public class BallDemo
         rand = new Random();
         
         //temp ball num
-        ballNum = 0;
+        ballNum = 100;
         
         //IMPORTANT these numbers decide the size of the box
         boxX = 350;
@@ -99,7 +99,7 @@ public class BallDemo
     {
         //gets a random ball number
         ballNum = (rand.nextInt(30 - 5) + 5) + 1;
-        
+        //ballNum = rand.nextInt(10) + 1;
         
         //this loopo generates the balls needed and sticks them in an array
         for(int i = 0; i < ballNum; i++)
@@ -168,7 +168,7 @@ public class BallDemo
     {
         Random rand = new Random();
         int num;
-        num = rand.nextInt(max) + 1;
+        num = rand.nextInt(max) + 1; 
         
         return num;
         
