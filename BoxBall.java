@@ -17,7 +17,13 @@ public class BoxBall
     private int diameter;
     private int xPosition;
     private int yPosition;
-    private final int groundPosition;      // y position of ground
+    
+    private final int bottomPosition;      // y position of ground
+    private final int leftPosition;
+    private final int rightPosition;
+    private final int topPosition;
+    
+    
     
     private Canvas canvas;
     
@@ -34,13 +40,16 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        int groundPos, Canvas drawingCanvas)
+                        int bottomPos,int leftPos, int rightPos, int topPos, Canvas drawingCanvas)
     {
         xPosition = xPos;
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
-        groundPosition = groundPos;
+        bottomPosition = bottomPos;
+        leftPosition = leftPos;
+        rightPosition = rightPos;
+        topPosition = topPos;
         canvas = drawingCanvas;
     }
     
@@ -69,16 +78,35 @@ public class BoxBall
         // remove from canvas at the current position
         erase();
             
+        
+        
+        
+        
+        
         // compute new position
-        ySpeed += GRAVITY;
+        //ySpeed += GRAVITY;
         yPosition += ySpeed;
         xPosition +=2;
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // check if it has hit the ground
+        /*
         if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
             yPosition = (int)(groundPosition - diameter);
             ySpeed = -ySpeed + ballDegradation; 
         }
+*/
+
+
+
 
         // draw again at new position
         draw();

@@ -1,5 +1,5 @@
 import java.awt.Color;
-
+import java.util.Random;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -31,9 +31,54 @@ public class BallDemo
         int ground = 400;   // position of the ground line
         int roof = 10;
         myCanvas.setVisible(true);
+        
+        Random rand = new Random();
+        int ballNum = 0;
+        
+        int boxX = 350;
+        int boxY = 350;
+        int offBoxX = 50;
+        int offBoxY = 50;
+        
+        
+        
+        
+        int xPos = 50;
+        int yPos = 50;
+        int ballDiameter = 50;
+        Color ballColor;
+        int bottomPos = 0;
+        int leftPos = 0;
+        int rightPos = 0;
+        int topPos = 0;
+        
+        
+        
 
         // draw the ground
-        drawSquare(450,450,50,50);
+        drawSquare(boxX,boxY,offBoxX,offBoxY);
+        
+        ballNum = (rand.nextInt(30 - 5) + 5) + 1;
+        
+        for(int i = 0; i < ballNum; i++)
+        {
+            ballColor = new Color(randomNumber(255),randomNumber(255),randomNumber(255));
+            
+            xPos = randomNumber();
+            
+            
+            BoxBall ball = new BoxBall(xPos, yPos, ballDiameter,ballColor,bottomPos,
+                                    leftPos, rightPos, topPos, myCanvas);
+            
+            
+                                    
+            ball.draw();                        
+                                    
+            
+        }
+        
+        
+        
         
         
         
@@ -60,6 +105,27 @@ public class BallDemo
             // }
         // }
     }
+    
+    private int randomNumber(int max, int min)
+    {
+        Random rand = new Random();
+        int num;
+        num = (rand.nextInt(max - min) + min) + 1;
+        
+        return num;
+        
+    }
+    private int randomNumber(int max)
+    {
+        Random rand = new Random();
+        int num;
+        num = rand.nextInt(max) + 1;
+        
+        return num;
+        
+    }    
+    
+    
     private void drawSquare(int sizeX, int sizeY, int posX, int posY)
     {
         
