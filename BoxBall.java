@@ -93,6 +93,9 @@ public class BoxBall
         // remove from canvas at the current position
         erase();
             
+        int radius = diameter / 2;
+        
+        
         //Random rand = new Random();
         
         //color = new Color(rand.nextInt(240),rand.nextInt(240),rand.nextInt(240));
@@ -109,23 +112,23 @@ public class BoxBall
         if (xPosition + diameter>= rightPosition)
         {
             xSpeed *= -1;
-            xPosition -= diameter;
+            xPosition -= radius;
         }
         else if(xPosition <= leftPosition)
         {
             xSpeed *= -1;
-            xPosition += diameter;
+            xPosition += radius;
         }
         
         if (yPosition + diameter >= bottomPosition)
         {
             ySpeed *= -1;
-            yPosition -= diameter;
+            yPosition -= radius;
         }
         else if (yPosition <= topPosition)
         {
             ySpeed *= -1;
-            yPosition += diameter;
+            yPosition += radius;
         }
         
         

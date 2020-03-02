@@ -194,14 +194,10 @@ public class BallDemo
     private void drawSquare(int sizeX, int sizeY, int posX, int posY)
     {
         
-        
-        
         myCanvas.drawLine(0 + posX, 0 + posY, sizeX + posX, 0 + posY);
         myCanvas.drawLine(0 + posX, 0 + posY, 0 + posX, sizeY + posY);
         myCanvas.drawLine( 0 + posX, sizeY + posY, sizeX + posX, sizeY + posY);
         myCanvas.drawLine( sizeX + posX, 0 + posY, sizeX + posX, sizeY + posY);
-        
-        
         
     }
 }
